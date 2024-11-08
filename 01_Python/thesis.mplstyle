@@ -1,0 +1,756 @@
+### MATPLOTLIBRC FORMAT
+
+# Blank lines, or lines starting with a comment symbol, are ignored, as are
+# trailing comments.  Other lines must have the format:
+#     key: val  # optional comment
+
+# Formatting: Use PEP8-like style (as enforced in the rest of the codebase).
+# All lines start with an additional '#', so that removing all leading '#'s
+# yields a valid style file.
+#
+# Colors: for the color values below, you can either use
+#     - a Matplotlib color string, such as r, k, or b
+#     - an RGB tuple, such as (1.0, 0.5, 0.0)
+#     - a double-quoted hex string, such as "#ff00ff".
+#       The unquoted string ff00ff is also supported for backward
+#       compatibility, but is discouraged.
+#     - a scalar grayscale intensity such as 0.75
+#     - a legal html color name, e.g., red, blue, darkslategray
+#
+# String values may optionally be enclosed in double quotes, which allows
+# using the comment character # in the string.
+#
+# This file (and other style files) must be encoded as utf-8.
+#
+# Matplotlib configuration are currently divided into following parts:
+#     - BACKENDS
+#     - LINES
+#     - PATCHES
+#     - HATCHES
+#     - BOXPLOT
+#     - FONT
+#     - TEXT
+#     - LaTeX
+#     - AXES
+#     - DATES
+#     - TICKS
+#     - GRIDS
+#     - LEGEND
+#     - FIGURE
+#     - IMAGES
+#     - CONTOUR PLOTS
+#     - ERRORBAR PLOTS
+#     - HISTOGRAM PLOTS
+#     - SCATTER PLOTS
+#     - AGG RENDERING
+#     - PATHS
+#     - SAVING FIGURES
+#     - INTERACTIVE KEYMAPS
+#     - ANIMATION
+
+#### CONFIGURATION BEGINS HERE
+
+
+# ↓ようわからん
+# ***************************************************************************
+# * BACKENDS                                                                *
+# ***************************************************************************
+# The default backend.  If you omit this parameter, the first working
+# backend from the following list is used:
+#     MacOSX QtAgg Gtk4Agg Gtk3Agg TkAgg WxAgg Agg
+# Other choices include:
+#     QtCairo GTK4Cairo GTK3Cairo TkCairo WxCairo Cairo
+#     Qt5Agg Qt5Cairo Wx  # deprecated.
+#     PS PDF SVG Template
+# You can also deploy your own backend outside of Matplotlib by referring to
+# the module name (which must be in the PYTHONPATH) as 'module://my_backend'.
+# backend: Agg
+
+# The port to use for the web server in the WebAgg backend.
+# webagg.port: 8988
+
+# The address on which the WebAgg web server should be reachable
+# webagg.address: 127.0.0.1
+
+# If webagg.port is unavailable, a number of other random ports will
+# be tried until one that is available is found.
+# webagg.port_retries: 50
+
+# When True, open the web browser to the plot that is shown
+# webagg.open_in_browser: True
+
+# If you are running pyplot inside a GUI and your backend choice
+# conflicts, we will automatically try to find a compatible one for
+# you if backend_fallback is True
+# backend_fallback: True
+
+# interactive: False
+# figure.hooks:          # list of dotted.module.name:dotted.callable.name
+# toolbar:     toolbar2  # {None, toolbar2, toolmanager}
+# timezone:    UTC       # a pytz timezone string, e.g., US/Central or Europe/Paris
+
+
+# ***************************************************************************
+# * LINES                                                                   *
+# ***************************************************************************
+# See https://matplotlib.org/stable/api/artist_api.html#module-matplotlib.lines
+# for more information on line properties.
+lines.linewidth       : 2        # 線の太さ
+lines.linestyle       : -          # 線の種類
+lines.color           : C0         # plot()には反映されない <-> axes.prop_cycle
+lines.marker          : None       # マーカーの種類
+lines.markerfacecolor : auto       # マーカーの塗りつぶしの色
+lines.markeredgecolor : auto       # マーカーの枠線の色
+lines.markeredgewidth : 1.0        # マーカーの枠線の太さ
+lines.markersize      : 15          # マーカーの大きさ[point]
+lines.dash_joinstyle  : round      # 破線の繋ぎ目{miter, round, bevel}
+lines.dash_capstyle   : butt       # 破線の角{butt, round, projecting}
+lines.solid_joinstyle : round      # 実線の繋ぎ目{miter, round, bevel}
+lines.solid_capstyle  : projecting # 破線の角{butt, round, projecting}
+lines.antialiased     : True       # アンチエイリアシング処理
+
+# 破線のパターンの詳細設定
+lines.dashed_pattern  : 3.7, 1.6
+lines.dashdot_pattern : 6.4, 1.6, 1, 1.6
+lines.dotted_pattern  : 1, 1.65
+lines.scale_dashes    : True
+
+markers.fillstyle : full     # マーカーの塗りつぶしの領域 {full, left, right, bottom, top, none}
+
+pcolor.shading : auto        # pcolormeshの設定 {auto, flat, nearest, gouraud}
+pcolormesh.snap : True  # Whether to snap the mesh to pixel boundaries. This is
+                        # provided solely to allow old test images to remain
+                        # unchanged. Set to False to obtain the previous behavior.
+
+# ***************************************************************************
+# * PATCHES                                                                 *
+# ***************************************************************************
+# パッチとは，2次元の図形
+# See https://matplotlib.org/stable/api/artist_api.html#module-matplotlib.patches
+# for more information on patch properties.
+patch.linewidth       : 1.0         # 枠線の太さ
+patch.facecolor       : C0          # 塗りつぶしの色
+patch.edgecolor       : black     # 枠線の色
+patch.force_edgecolor : True        # 枠線を常時使用する
+patch.antialiased     : True        # アンチエイリアシング処理
+
+
+# ***************************************************************************
+# * HATCHES                                                                 *
+# ***************************************************************************
+# ハッチング処理の設定
+hatch.color     : black     # ハッチングの色
+hatch.linewidth : 1.0         # ハッチングの線の太さ
+
+
+# # ***************************************************************************
+# # * BOXPLOT                                                                 *
+# # ***************************************************************************
+# # 箱ひげ図の設定
+# boxplot.notch       : False
+# boxplot.vertical    : True
+# boxplot.whiskers    : 1.5
+# boxplot.bootstrap   : None
+# boxplot.patchartist : False
+# boxplot.showmeans   : False
+# boxplot.showcaps    : True
+# boxplot.showbox     : True
+# boxplot.showfliers  : True
+# boxplot.meanline    : False
+# 
+# boxplot.flierprops.color           : black
+# boxplot.flierprops.marker          : o
+# boxplot.flierprops.markerfacecolor : none
+# boxplot.flierprops.markeredgecolor : black
+# boxplot.flierprops.markeredgewidth : 1.0
+# boxplot.flierprops.markersize      : 6
+# boxplot.flierprops.linestyle       : none
+# boxplot.flierprops.linewidth       : 1.0
+# 
+# boxplot.boxprops.color     : black
+# boxplot.boxprops.linewidth : 1.0
+# boxplot.boxprops.linestyle : -
+# 
+# boxplot.whiskerprops.color     : black
+# boxplot.whiskerprops.linewidth : 1.0
+# boxplot.whiskerprops.linestyle : -
+# 
+# boxplot.capprops.color     : black
+# boxplot.capprops.linewidth : 1.0
+# boxplot.capprops.linestyle : -
+# 
+# boxplot.medianprops.color     : C1
+# boxplot.medianprops.linewidth : 1.0
+# boxplot.medianprops.linestyle : -
+# 
+# boxplot.meanprops.color           : C2
+# boxplot.meanprops.marker          : ^
+# boxplot.meanprops.markerfacecolor : C2
+# boxplot.meanprops.markeredgecolor : C2
+# boxplot.meanprops.markersize      : 6
+# boxplot.meanprops.linestyle       : --
+# boxplot.meanprops.linewidth       : 1.0
+
+
+# ***************************************************************************
+# * FONT                                                                    *
+# ***************************************************************************
+# text.Textの設定
+# See https://matplotlib.org/stable/api/font_manager_api.html for more information
+# on font properties.  The 6 font properties used for font matching are
+# given below with their default values.
+#
+# The font.family property can take either a single or multiple entries of any
+# combination of concrete font names (not supported when rendering text with
+# usetex) or the following five generic values:
+#     - 'serif' (e.g., Times),
+#     - 'sans-serif' (e.g., Helvetica),
+#     - 'cursive' (e.g., Zapf-Chancery),
+#     - 'fantasy' (e.g., Western), and
+#     - 'monospace' (e.g., Courier).
+# Each of these values has a corresponding default list of font names
+# (font.serif, etc.); the first available font in the list is used.  Note that
+# for font.serif, font.sans-serif, and font.monospace, the first element of
+# the list (a DejaVu font) will always be used because DejaVu is shipped with
+# Matplotlib and is thus guaranteed to be available; the other entries are
+# left as examples of other possible values.
+#
+# The font.style property has three values: normal (or roman), italic
+# or oblique.  The oblique style will be used for italic, if it is not
+# present.
+#
+# The font.variant property has two values: normal or small-caps.  For
+# TrueType fonts, which are scalable fonts, small-caps is equivalent
+# to using a font size of 'smaller', or about 83 % of the current font
+# size.
+#
+# The font.weight property has effectively 13 values: normal, bold,
+# bolder, lighter, 100, 200, 300, ..., 900.  Normal is the same as
+# 400, and bold is 700.  bolder and lighter are relative values with
+# respect to the current weight.
+#
+# The font.stretch property has 11 values: ultra-condensed,
+# extra-condensed, condensed, semi-condensed, normal, semi-expanded,
+# expanded, extra-expanded, ultra-expanded, wider, and narrower.  This
+# property is not currently implemented.
+#
+# The font.size property is the default font size for text, given in points.
+# 10 pt is the standard value.
+#
+# Note that font.size controls default text sizes.  To configure
+# special text sizes tick labels, axes, labels, title, etc., see the rc
+# settings for axes and ticks.  Special text sizes can be defined
+# relative to font.size, using the following values: xx-small, x-small,
+# small, medium, large, x-large, xx-large, larger, or smaller
+
+# 注意：以下の5つは，tex使う時は反映されない
+# text.Textで使われるデフォルト
+font.family  : serif
+font.style   : normal
+font.variant : normal
+font.weight  : normal
+font.stretch : normal       
+
+font.size    : 35.0         # 全体のフォントサイズのデフォルト値
+
+font.serif      : Times New Roman, DejaVu Serif, Bitstream Vera Serif, Computer Modern Roman, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Times, Palatino, Charter, serif
+font.sans-serif : DejaVu Sans, Bitstream Vera Sans, Computer Modern Sans Serif, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
+font.cursive    : Apple Chancery, Textile, Zapf Chancery, Sand, Script MT, Felipa, Comic Neue, Comic Sans MS, cursive
+font.fantasy    : Chicago, Charcoal, Impact, Western, xkcd script, fantasy
+font.monospace  : DejaVu Sans Mono, Bitstream Vera Sans Mono, Computer Modern Typewriter, Andale Mono, Nimbus Mono L, Courier New, Courier, Fixed, Terminal, monospace
+
+
+# ***************************************************************************
+# * TEXT                                                                    *
+# ***************************************************************************
+# text.Textの設定
+# See https://matplotlib.org/stable/api/artist_api.html#module-matplotlib.text
+# for more information on text properties
+text.color : black
+
+# FreeType hinting flag ("foo" corresponds to FT_LOAD_FOO); may be one of the
+# following (Proprietary Matplotlib-specific synonyms are given in parentheses,
+# but their use is discouraged):
+# - default: Use the font's native hinter if possible, else FreeType's auto-hinter.
+#            ("either" is a synonym).
+# - no_autohint: Use the font's native hinter if possible, else don't hint.
+#                ("native" is a synonym.)
+# - force_autohint: Use FreeType's auto-hinter.  ("auto" is a synonym.)
+# - no_hinting: Disable hinting.  ("none" is a synonym.)
+text.hinting : force_autohint
+
+text.hinting_factor : 8     # Specifies the amount of softness for hinting in the
+                            # horizontal direction.  A value of 1 will hint to full
+                            # pixels.  A value of 2 will hint to half pixels etc.
+text.kerning_factor : 0     # Specifies the scaling factor for kerning values.  This
+                            # is provided solely to allow old test images to remain
+                            # unchanged.  Set to 6 to obtain previous behavior.
+                            # Values  other than 0 or 6 have no defined meaning.
+text.antialiased    : True  # If True (default), the text will be antialiased.
+                            # This only affects raster outputs.
+text.parse_math     : True  # Use mathtext if there is an even number of unescaped
+                            # dollar signs.
+
+
+# ***************************************************************************
+# * LaTeX                                                                   *
+# ***************************************************************************
+# For more information on LaTeX properties, see
+# https://matplotlib.org/stable/users/explain/text/usetex.html
+text.usetex : True      # 全てのtextにtexを使うか．The following fonts
+                        # are supported through the usual rc parameter settings:
+                        # new century schoolbook, bookman, times, palatino,
+                        # zapf chancery, charter, serif, sans-serif, helvetica,
+                        # avant garde, courier, monospace, computer modern roman,
+                        # computer modern sans serif, computer modern typewriter
+text.latex.preamble : \usepackage{physics, amsmath, amssymb, amsfonts, newtxtext, newtxmath}
+                            # latexのプリアンプル設定（1行で記述）
+                            # IMPROPER USE OF THIS FEATURE WILL LEAD TO LATEX FAILURES
+                            # AND IS THEREFORE UNSUPPORTED. PLEASE DO NOT ASK FOR HELP
+                            # IF THIS FEATURE DOES NOT DO WHAT YOU EXPECT IT TO.
+                            # text.latex.preamble is a single line of LaTeX code that
+                            # will be passed on to the LaTeX system. It may contain
+                            # any code that is valid for the LaTeX "preamble", i.e.
+                            # between the "\documentclass" and "\begin{document}"
+                            # statements.
+                            # Note that it has to be put on a single line, which may
+                            # become quite long.
+                            # The following packages are always loaded with usetex,
+                            # so beware of package collisions:
+                            #   geometry, inputenc, type1cm.
+                            # PostScript (PSNFSS) font packages may also be
+                            # loaded, depending on your font settings.
+
+# The following settings allow you to select the fonts in math mode.
+mathtext.fontset : stix     # Should be 'dejavusans' (default),
+                            # 'dejavuserif', 'cm' (Computer Modern), 'stix',
+                            # 'stixsans' or 'custom'
+# "mathtext.fontset: custom" is defined by the mathtext.bf, .cal, .it, ...
+# settings which map a TeX font name to a fontconfig font pattern.  (These
+# settings are not used for other font sets.)
+mathtext.bf       : sans:bold
+mathtext.bfit     : sans:italic:bold
+mathtext.cal      : cursive
+mathtext.it       : sans:italic
+mathtext.rm       : sans
+mathtext.sf       : sans
+mathtext.tt       : monospace
+mathtext.fallback : cm      # Select fallback font from ['cm' (Computer Modern), 'stix'
+                            # 'stixsans'] when a symbol cannot be found in one of the
+                            # custom math fonts. Select 'None' to not perform fallback
+                            # and replace the missing character by a dummy symbol.
+mathtext.default  : it      # The default font to use for math.
+                            # Can be any of the LaTeX font names, including
+                            # the special name "regular" for the same font
+                            # used in regular text.
+
+# ***************************************************************************
+# * FIGURE                                                                  *
+# ***************************************************************************
+# See https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure
+figure.titlesize        : medium    # 図のタイトルサイズ(Figure.suptitle())
+figure.titleweight      : normal    # 図のタイトルの重さ（tex使うと無効）
+figure.labelsize        : medium    # 図のラベルサイズ(Figure.sup[x|y]label())
+figure.labelweight      : normal    # 図のラベルの重さ（tex使うと無効）
+figure.figsize          : 9, 7      # 図のサイズ[inch]
+figure.dpi              : 300       # 図の解像度（1インチ当たりのドット数）
+figure.facecolor        : white   # 図の背景の色
+figure.edgecolor        : black   # 図の枠線の色
+figure.frameon          : False     # 図の枠線を描画するかどうか
+# figure.max_open_warning : -1        # 同時に開いた図の枚数に関する警告の出力（1以下で無効）
+# figure.raise_window     : True      # show()を呼んだ時に，windowを表示するかどうか
+
+# subplotsの設定（単位は図のサイズに対する割合）
+figure.subplot.left   : 0.15     # subplotの左側の余白
+figure.subplot.right  : 0.95    # subplotの右側の余白
+figure.subplot.bottom : 0.1     # subplotの下側の余白
+figure.subplot.top    : 0.9     # subplotの上側の余白
+figure.subplot.wspace : 0.2     # subplotsの間の横の間隔（x軸の長さに対する割合）
+figure.subplot.hspace : 0.2     # subplotsの間の縦の間隔（y軸の長さに対する割合）
+
+# 図のレイアウト設定
+figure.autolayout             : False   # subplotsのパラメータをグラフが図に収まるように
+                                        #（tight_layoutで）自動調整するかどうか
+figure.constrained_layout.use : True    # plotする要素自体を図に合うように自動調整するかどうか
+
+# constrained_layoutを使う場合の設定（デフォルトは0.04167 [inch] = 3 [point]）
+figure.constrained_layout.h_pad : 0.08   # 各subplot周りの上下の余白
+figure.constrained_layout.w_pad : 0.08   # 各subplot周りの左右の余白
+figure.constrained_layout.hspace: 0.02      # subplotsの間の余白（縦）
+figure.constrained_layout.wspace: 0.02      # subplotsの間の余白（横）
+
+
+# ***************************************************************************
+# * AXES                                                                    *
+# ***************************************************************************
+# プロットするグラフ領域や軸の詳細設定
+# See https://matplotlib.org/stable/api/axes_api.html#module-matplotlib.axes
+axes.facecolor     : white    # グラフ領域の背景の色
+axes.edgecolor     : black    # グラフ領域の枠線の色
+axes.linewidth     : 3          # グラフ領域の枠線の太さ
+axes.grid          : False      # グラフ領域にグリッドを表示するかどうか
+axes.grid.axis     : both       # グリッドを表示する場合，どの軸に表示するか:{x, y, both}
+axes.grid.which    : major      # どのメモリ位置にグリッドを表示するか:{major, minor, both}
+axes.titlelocation : center     # タイトルの位置:{left, right, center}
+axes.titlesize     : large      # axesのタイトルサイズ（axes.set_title()）
+axes.titleweight   : normal     # axesのタイトルの重さ（tex使うと無効）
+axes.titlecolor    : auto       # axesのタイトルの色（autoならtext.colorの設定に基づく）
+axes.titley        : 1.0        # axesのタイトルのy方向位置（noneなら自動）
+axes.titlepad      : 20.0       # axesのタイトルとaxesの間の余白[point]
+axes.labelsize     : large      # axesのx軸とy軸のラベルのサイズ
+axes.labelpad      : 4.0        # axesのラベルとaxesの間の余白
+axes.labelweight   : normal     # axesのラベルの重さ
+axes.labelcolor    : black    # axesのラベルの色
+axes.axisbelow     : True       # グリッドや目盛を最背面にする
+
+axes.formatter.limits           : -2, 3     # 科学的な指数表記を用いる指数の閾値
+axes.formatter.use_locale       : False     # ロケールを変えるか
+axes.formatter.use_mathtext     : True      # 指数を10^nの形で表記するかどうか
+axes.formatter.min_exponent     : 0         # 指数表記する最小の指数
+axes.formatter.useoffset        : True      # ???
+axes.formatter.offset_threshold : 4         # ???
+                                    
+
+axes.spines.left   : True       # 軸の線を描画するかどうか（左側）
+axes.spines.bottom : True       # 軸の線を描画するかどうか（下側）
+axes.spines.top    : True       # 軸の線を描画するかどうか（上側）
+axes.spines.right  : True       # 軸の線を描画するかどうか（右側）
+
+axes.unicode_minus  : True      # マイナス記号にハイフンではなくUNICODEを用いるかどうか
+axes.prop_cycle     : cycler(color = ['343d46', '4f5b66', '65737e', 'a7adba', 'c0c5ce'])+cycler(marker = ['o', 'v', '^', 's', '*'])    # グラフの色とマーカーの循環
+axes.xmargin        : 0.04      # プロットとaxesの枠線のx方向の余白
+axes.ymargin        : 0.04      # プロットとaxesの枠線のy方向の余白
+axes.zmargin        : 0.04      # プロットとaxesの枠線のz方向の余白
+axes.autolimit_mode : data      # プロット範囲をデータに合わせるかどうか
+polaraxes.grid      : True      # 極座標表示する場合にグリッドを描画するかどうか
+axes3d.grid         : True      # 3次元プロットする場合にグリッドを描画するかどうか
+# axes3d.automargin   : False     # 3次元プロットする場合に自動的に余白を設定するかどうか
+
+axes3d.xaxis.panecolor : (0.95, 0.95, 0.95, 0.5)        # background pane on 3D axes
+axes3d.yaxis.panecolor : (0.90, 0.90, 0.90, 0.5)        # background pane on 3D axes
+axes3d.zaxis.panecolor : (0.925, 0.925, 0.925, 0.5)     # background pane on 3D axes
+
+# ***************************************************************************
+# * AXIS                                                                    *
+# ***************************************************************************
+xaxis.labellocation: center  # x軸ラベルの揃え: {left, right, center}
+yaxis.labellocation: center  # y軸ラベルの揃え: {bottom, top, center}
+
+
+# ***************************************************************************
+# * DATES                                                                   *
+# ***************************************************************************
+# These control the default format strings used in AutoDateFormatter.
+# Any valid format datetime format string can be used (see the python
+# `datetime` for details).  For example, by using:
+#     - '%x' will use the locale date representation
+#     - '%X' will use the locale time representation
+#     - '%c' will use the full locale datetime representation
+# These values map to the scales:
+#     {'year': 365, 'month': 30, 'day': 1, 'hour': 1/24, 'minute': 1 / (24 * 60)}
+
+date.autoformatter.year        : %Y
+date.autoformatter.month       : %Y-%m
+date.autoformatter.day         : %Y-%m-%d
+date.autoformatter.hour        : %m-%d %H
+date.autoformatter.minute      : %d %H:%M
+date.autoformatter.second      : %H:%M:%S
+date.autoformatter.microsecond : %M:%S.%f
+# The reference date for Matplotlib's internal date representation
+# See https://matplotlib.org/stable/gallery/ticks/date_precision_and_epochs.html
+# date.epoch: 1970-01-01T00:00:00
+# 'auto', 'concise':
+date.converter          : auto
+# For auto converter whether to use interval_multiples:
+date.interval_multiples : True
+
+# ***************************************************************************
+# * TICKS                                                                   *
+# ***************************************************************************
+# 目盛の設定
+# See https://matplotlib.org/stable/api/axis_api.html#matplotlib.axis.Tick
+# x軸について
+xtick.top           : True      # 上側に目盛を描画するかどうか
+xtick.bottom        : True      # 下側に目盛を描画するかどうか
+xtick.labeltop      : False     # 上側にラベルを描画するかどうか
+xtick.labelbottom   : True      # 下側にラベルを描画するかどうか
+xtick.major.size    : 14        # メジャー目盛のサイズ[point]
+xtick.minor.size    : 8         # マイナー目盛のサイズ[point]
+xtick.major.width   : 3         # メジャー目盛の太さ[point]
+xtick.minor.width   : 1         # マイナー目盛の太さ[point]
+xtick.major.pad     : 10        # 軸と目盛ラベルとの距離[point]
+xtick.minor.pad     : 10        # 軸と目盛ラベルとの距離[point]
+xtick.color         : black   # 目盛の色
+xtick.labelcolor    : inherit   # 目盛ラベルの色（inheritでxtick.colorと同じ）
+xtick.labelsize     : medium    # 目盛ラベルのフォントサイズ
+xtick.direction     : in        # 目盛の向き: {in, out, inout}
+xtick.minor.visible : True      # マイナー目盛を描画するかどうか
+xtick.major.top     : True      # 上側のメジャー目盛を描画するかどうか
+xtick.major.bottom  : True      # 下側のメジャー目盛を描画するかどうか
+xtick.minor.top     : True      # 上側のマイナー目盛を描画するかどうか
+xtick.minor.bottom  : True      # 下側のマイナー目盛を描画するかどうか
+xtick.minor.ndivs   : auto      # メジャー目盛間のマイナー目盛の間隔を自動で設定するかどうか
+xtick.alignment     : center    # 目盛ラベルの揃え
+
+# y軸について
+ytick.left          : True              # 左側に目盛を描画するかどうか
+ytick.right         : True             # 右側に目盛を描画するかどうか
+ytick.labelleft     : True              # 左側にラベルを描画するかどうか
+ytick.labelright    : False             # 右側にラベルを描画するかどうか
+ytick.major.size    : 14                # メジャー目盛のサイズ[point]
+ytick.minor.size    : 8                 # マイナー目盛のサイズ[point]
+ytick.major.width   : 3                 # メジャー目盛の太さ[point]
+ytick.minor.width   : 1                 # マイナー目盛の太さ[point]
+ytick.major.pad     : 10                # 軸と目盛ラベルとの距離[point]
+ytick.minor.pad     : 10                # 軸と目盛ラベルとの距離[point]
+ytick.color         : black           # 目盛の色
+ytick.labelcolor    : inherit           # 目盛ラベルの色（inheritでxtick.colorと同じ）
+ytick.labelsize     : medium            # 目盛ラベルのフォントサイズ
+ytick.direction     : in                # 目盛の向き: {in, out, inout}
+ytick.minor.visible : True              # マイナー目盛を描画するかどうか
+ytick.major.left    : True              # 左側のメジャー目盛を描画するかどうか
+ytick.major.right   : True              # 右側のメジャー目盛を描画するかどうか
+ytick.minor.left    : True              # 左側のマイナー目盛を描画するかどうか
+ytick.minor.right   : True              # 右側のマイナー目盛を描画するかどうか
+ytick.minor.ndivs   : auto              # メジャー目盛間のマイナー目盛の間隔を自動で設定するかどうか
+ytick.alignment     : center_baseline   # 目盛ラベルの揃え
+
+
+# ***************************************************************************
+# * GRIDS                                                                   *
+# ***************************************************************************
+grid.color     : "#b0b0b0"      # グリッド線の色
+grid.linestyle : -              # グリッド線の種類
+grid.linewidth : 0.8            # グリッド線の太さ
+grid.alpha     : 1.0            # グリッド線の不透明度
+
+
+# ***************************************************************************
+# * LEGEND                                                                  *
+# ***************************************************************************
+legend.loc            : best
+legend.frameon        : True     # 凡例に背景色を付けるかどうか
+legend.framealpha     : 0.8      # 凡例の背景色の不透明度
+legend.facecolor      : inherit  # 凡例の背景色
+legend.edgecolor      : none   # 凡例の枠線の色
+legend.fancybox       : False    # 凡例の枠の角を丸めるかどうか
+legend.shadow         : False    # 凡例に影を付けるかどうか
+legend.numpoints      : 1        # 凡例に表示するマーカーの数
+legend.scatterpoints  : 1        # 凡例に表示するマーカーの数
+legend.markerscale    : 1.0      # 凡例の相対的なマーカーサイズ
+legend.fontsize       : medium   # 凡例のフォントサイズ
+legend.labelcolor     : None   # 凡例のラベルの色
+legend.title_fontsize : None     # 凡例のタイトルのフォントサイズ（noneはaxesのデフォルト）
+
+# Dimensions as fraction of font size:
+legend.borderpad     : 0.4  # border whitespace
+legend.labelspacing  : 0.5  # the vertical space between the legend entries
+legend.handlelength  : 2.0  # the length of the legend lines
+legend.handleheight  : 0.7  # the height of the legend handle
+legend.handletextpad : 0.8  # the space between the legend line and legend text
+legend.borderaxespad : 0.5  # the border between the axes and legend edge
+legend.columnspacing : 2.0  # column separation
+
+
+
+
+# ***************************************************************************
+# * IMAGES                                                                  *
+# ***************************************************************************
+image.aspect:          equal        # {equal, auto} or a number
+image.interpolation:   antialiased  # see help(imshow) for options
+# image.interpolation_stage: data     # see help(imshow) for options
+image.cmap:            viridis      # A colormap name (plasma, magma, etc.)
+image.lut:             256          # the size of the colormap lookup table
+image.origin:          upper        # {lower, upper}
+image.resample:        True
+image.composite_image: True  # When True, all the images on a set of axes are
+                             # combined into a single composite image before
+                             # saving a figure as a vector graphics file,
+                             # such as a PDF.
+
+
+# ***************************************************************************
+# * CONTOUR PLOTS                                                           *
+# ***************************************************************************
+contour.negative_linestyle: dashed  # string or on-off ink sequence
+contour.corner_mask:        True    # {True, False}
+contour.linewidth:          None    # {float, None} Size of the contour line
+                                    # widths. If set to None, it falls back to
+                                    # `line.linewidth`.
+contour.algorithm:          mpl2014 # {mpl2005, mpl2014, serial, threaded}
+
+
+# ***************************************************************************
+# * ERRORBAR PLOTS                                                          *
+# ***************************************************************************
+errorbar.capsize: 0  # length of end cap on error bars in pixels
+
+
+# ***************************************************************************
+# * HISTOGRAM PLOTS                                                         *
+# ***************************************************************************
+hist.bins: 10  # The default number of histogram bins or 'auto'.
+
+
+# ***************************************************************************
+# * SCATTER PLOTS                                                           *
+# ***************************************************************************
+scatter.marker: o         # The default marker type for scatter plots.
+scatter.edgecolors: face  # The default edge colors for scatter plots.
+
+
+# ***************************************************************************
+# * AGG RENDERING                                                           *
+# ***************************************************************************
+# Warning: experimental, 2008/10/10
+agg.path.chunksize: 0  # 0 to disable; values in the range
+                       # 10000 to 100000 can improve speed slightly
+                       # and prevent an Agg rendering failure
+                       # when plotting very large data sets,
+                       # especially if they are very gappy.
+                       # It may cause minor artifacts, though.
+                       # A value of 20000 is probably a good
+                       # starting point.
+
+
+# ***************************************************************************
+# * PATHS                                                                   *
+# ***************************************************************************
+path.simplify: True  # When True, simplify paths by removing "invisible"
+                     # points to reduce file size and increase rendering
+                     # speed
+path.simplify_threshold: 0.111111111111  # The threshold of similarity below
+                                         # which vertices will be removed in
+                                         # the simplification process.
+path.snap: True  # When True, rectilinear axis-aligned paths will be snapped
+                 # to the nearest pixel when certain criteria are met.
+                 # When False, paths will never be snapped.
+path.sketch: None  # May be None, or a tuple of the form:
+                   #  path.sketch: (scale, length, randomness) 
+                   # - *scale* is the amplitude of the wiggle
+                   #    perpendicular to the line (in pixels).
+                   # - *length* is the length of the wiggle along the
+                   #    line (in pixels).
+                   # - *randomness* is the factor by which the length is
+                   #    randomly scaled.
+path.effects:
+
+
+# ***************************************************************************
+# * SAVING FIGURES                                                          *
+# ***************************************************************************
+# The default savefig parameters can be different from the display parameters
+# e.g., you may want a higher resolution, or to make the figure
+# background white
+savefig.dpi       : 300         # figure dots per inch or 'figure'
+savefig.facecolor : auto        # figure face color when saving
+savefig.edgecolor : auto        # figure edge color when saving
+savefig.format    : pdf         # {png, ps, pdf, svg}
+savefig.bbox      : standard    # {tight, standard}
+                               # 'tight' is incompatible with generating frames
+                               # for animation
+savefig.pad_inches:  0.1       # padding to be used, when bbox is set to 'tight'
+# savefig.directory:   ~         # default directory in savefig dialog, gets updated after
+                               # interactive saves, unless set to the empty string (i.e.
+                               # the current directory); use '.' to start at the current
+                               # directory but update after interactive saves
+savefig.transparent: False     # whether figures are saved with a transparent
+                               # background by default
+savefig.orientation: portrait  # orientation of saved figure, for PostScript output only
+
+## macosx backend params
+macosx.window_mode : system   # How to open new figures (system, tab, window)
+                              # system uses the MacOS system preferences
+
+## tk backend params
+# tk.window_focus:   False  # Maintain shell focus for TkAgg
+
+## ps backend params
+ps.papersize:      letter  # {figure, letter, legal, ledger, A0-A10, B0-B10}
+ps.useafm:         False   # use AFM fonts, results in small files
+ps.usedistiller:   False   # {ghostscript, xpdf, None}
+                           # Experimental: may produce smaller files.
+                           # xpdf intended for production of publication quality files,
+                           # but requires ghostscript, xpdf and ps2eps
+ps.distiller.res:  6000    # dpi
+ps.fonttype:       3       # Output Type 3 (Type3) or Type 42 (TrueType)
+
+## PDF backend params
+pdf.compression:    6  # integer from 0 to 9
+                       # 0 disables compression (good for debugging)
+pdf.fonttype:       3  # Output Type 3 (Type3) or Type 42 (TrueType)
+pdf.use14corefonts: False
+pdf.inheritcolor:   False
+
+## SVG backend params
+svg.image_inline: True  # Write raster image data directly into the SVG file
+svg.fonttype: path      # How to handle SVG fonts:
+                        #     path: Embed characters as paths -- supported
+                        #           by most SVG renderers
+                        #     None: Assume fonts are installed on the
+                        #           machine where the SVG will be viewed.
+svg.hashsalt: None      # If not None, use this string as hash salt instead of uuid4
+
+## pgf parameter
+# See https://matplotlib.org/stable/tutorials/text/pgf.html for more information.
+pgf.rcfonts: True
+pgf.preamble:  # See text.latex.preamble for documentation
+pgf.texsystem: xelatex
+
+## docstring params
+# docstring.hardcopy: False  # set this when you want to generate hardcopy docstring
+
+
+# ***************************************************************************
+# * INTERACTIVE KEYMAPS                                                     *
+# ***************************************************************************
+# Event keys to interact with figures/plots via keyboard.
+# See https://matplotlib.org/stable/users/explain/interactive.html for more
+# details on interactive navigation.  Customize these settings according to
+# your needs. Leave the field(s) empty if you don't need a key-map. (i.e.,
+# fullscreen : '')
+keymap.fullscreen: f, ctrl+f   # toggling
+keymap.home: h, r, home        # home or reset mnemonic
+keymap.back: left, c, backspace, MouseButton.BACK  # forward / backward keys
+keymap.forward: right, v, MouseButton.FORWARD      # for quick navigation
+keymap.pan: p                  # pan mnemonic
+keymap.zoom: o                 # zoom mnemonic
+keymap.save: s, ctrl+s         # saving current figure
+keymap.help: f1                # display help about active tools
+keymap.quit: ctrl+w, cmd+w, q  # close the current figure
+keymap.quit_all:               # close all figures
+keymap.grid: g                 # switching on/off major grids in current axes
+keymap.grid_minor: G           # switching on/off minor grids in current axes
+keymap.yscale: l               # toggle scaling of y-axes ('log'/'linear')
+keymap.xscale: k, L            # toggle scaling of x-axes ('log'/'linear')
+keymap.copy: ctrl+c, cmd+c     # copy figure to clipboard
+
+
+# ***************************************************************************
+# * ANIMATION                                                               *
+# ***************************************************************************
+animation.html: none  # How to display the animation as HTML in
+                      # the IPython notebook:
+                      #     - 'html5' uses HTML5 video tag
+                      #     - 'jshtml' creates a JavaScript animation
+animation.writer:  ffmpeg        # MovieWriter 'backend' to use
+animation.codec:   h264          # Codec to use for writing movie
+animation.bitrate: -1            # Controls size/quality trade-off for movie.
+                                 # -1 implies let utility auto-determine
+animation.frame_format: png      # Controls frame format used by temp files
+
+# Path to ffmpeg binary.  Unqualified paths are resolved by subprocess.Popen.
+animation.ffmpeg_path:  ffmpeg
+# Additional arguments to pass to ffmpeg.
+animation.ffmpeg_args:
+
+# Path to ImageMagick's convert binary.  Unqualified paths are resolved by
+# subprocess.Popen, except that on Windows, we look up an install of
+# ImageMagick in the registry (as convert is also the name of a system tool).
+animation.convert_path: convert
+# Additional arguments to pass to convert.
+animation.convert_args: -layers, OptimizePlus
+
+animation.embed_limit:  20.0     # Limit, in MB, of size of base64 encoded
+                                 # animation in HTML (i.e. IPython notebook)
